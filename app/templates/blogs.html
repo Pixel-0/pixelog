@@ -1,0 +1,46 @@
+<link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+
+{% extends "base.html" %}
+
+{% block styles%}
+{{ super() }}
+{% endblock%}
+
+{% block content %}
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+        <h1 style="text-align:center">{{title}}</h1>
+        {% if pitches %}
+            <!-- {% for row in pitches | batch(2) %} -->
+            <div class="row ">
+                {% for pitch in pitches %}
+                <div class="col-md-4 jumbotron" style="background-color: rgba(16, 30, 48, 0.5); margin: 0.5%;">
+                    <h3>{{pitch.title | upper}}</h3>
+                    <p>Posted by <strong>{{pitch.user.username}}</strong></p>
+                    <p>Date: <strong>{{pitch.date}}</strong> at <strong>{{blog.time}}</strong></p>
+                    <p>"{{pitch.content}}"</p>
+                    <p>CATEGORY: <strong>{{blog.category | upper}}</strong></p>
+                    <div>
+                        <div>
+                            {% if current_user.is_authenticated %}
+                            <a style="font-family: 'Courgette', cursive; font-size: 1.5em;" href="{{url_for('main.display_comments',blog_id = blog.id)}}">View Comments</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <h2>There are no pitches in this category</h2>
+            {% if current_user.is_authenticated %}
+            <a href="{{url_for('main.new_blog',uname = current_user.username)}}"><button class="btn btn-info">Make a New Pitch</button></a>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

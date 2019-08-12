@@ -10,11 +10,24 @@
 <link rel="stylesheet" href="/home/moringa/Desktop/pixelog/app/static/css/bootstrap.css">
 
 {% block content %}
-<a class="btn btn-outline-dark btn-xl sr-button" href="{{url_for('auth.register')}}">Get Started</a>
+<div class="row d-flex h-100 mt-5">
+        
+        <div class="col-md-6">
+            <img style="margin-left: 10%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs-o_EQq4lSxUWgH66-aYGO-PMQAVxQjRxJ5RrX3T55SBCXy9d" width="350px" alt="">
+        </div>
+        <div class="col-md-6 mt-5">
+                <h1 style="color: #000">Welcome to Pixelog</h1>
+                <br>
+                <p>Personal blog site for sharing opinions.<br>Interact with pixelog and get the latest blog posts</p>
+                <br>
+                <a href="{{ url_for('auth.register') }}" class="btn" style="background-color: transparent;color:#000; border: 1px solid #000;">Lets get started!</a>
+            </div>
+    </div>
+
 <div class="container">
     <div class="jumbotron text-center">
         <div class="quotes mt-5 w-50 mx-auto text-center">
-            <h3 class="text-primary m-0 m-2"><strong>Daily quotes</strong></h3>
+            <h3 class="text-dark m-0 m-2"><strong>Daily quotes</strong></h3>
             <blockquote>{{ quote.quote }}</blockquote>
             <h6>{{ quote.author }}</h6>
         </div>

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block styles%}
+{{ super() }}
+{% endblock%}
+
+
+{% block content%}
+    <div class="container">
+      <div class="row">
+          <h3>Comments for <strong>{{blog.title}}</strong> by <strong>{{blog.user.username}}</strong></h3>
+          <a href="{{url_for('main.new_comment',uname = current_user.username, pitch_id = pitch.id)}}"><button class="btn btn-info mr-0">Add comment</button></a>
+<hr>
+
+      </div>
+
+      {% if comments %}
+          {%for comment in comments%}
+          <div class="row">
+              <div class="col-xs-1 col-md-1 col-lg-1">
+                  <img src="{{url_for('static', filename=current_user.profile_pic_path)}}" class="img-thumbnail d-inline" height="50px" width="50px">
+              </div>
+              <div class="col">
+                  <p class="d-inline"><strong>{{comment.user.username}}</strong>: " {{comment.post_comment}} "</p>
+                  <p>Posted on <strong>{{comment.date}}</strong> at <strong>{{comment.time}}</strong></p>
+              </div>
+          </div>
+          <hr>
+          {% endfor %}
+      {% else %}
+      <h2>There are no comments</h2>
+      {% endif %}
+
+    </div>
+
+{% endblock %}
