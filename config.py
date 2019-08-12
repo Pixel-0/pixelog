@@ -6,13 +6,13 @@ class Config:
     QUOTE_API_KEY = os.environ.get('QUOTE_API_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
- class ProdConfig(Config):
+class ProdConfig(Config):
     pass
 
- class DevConfig(Config):
+class DevConfig(Config):
     DEBUG = True
 
- config_options = {
+config_options = {
 'development':DevConfig,
 'production':ProdConfig
 }
