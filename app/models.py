@@ -40,3 +40,25 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    post_comment = db.Column(db.String(255), index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.id'))
+    date = db.Column(db.String)
+    time = db.Column(db.String)
+    
+    def save_comment(self):
+        ''' Save the comments '''
+        db.session.add(self)
+        db.session.commit()
+    
+    
+    
+    # display comments
+    @classmethod
+    def get_comments(cls, id):
+        comments = Comment.query.filter_by(pitch_id=id).all()
+        return comments

@@ -7,15 +7,19 @@
 {{ super() }}
 {% endblock %}
 
+<link rel="stylesheet" href="/home/moringa/Desktop/pixelog/app/static/css/bootstrap.css">
 
 {% block content %}
-
-<div class="row col-md-12 text-center">
-    <div class="quotes mt-5 w-50 mx-auto text-center">
-        <h3 class="text-primary m-0 m-2"><strong>Daily quotes</strong></h3>
-        <blockquote>{{ quote.quote }}</blockquote>
-        <h6>{{ quote.author }}</h6>
+<a class="btn btn-outline-dark btn-xl sr-button" href="{{url_for('auth.register')}}">Get Started</a>
+<div class="container">
+    <div class="jumbotron text-center">
+        <div class="quotes mt-5 w-50 mx-auto text-center">
+            <h3 class="text-primary m-0 m-2"><strong>Daily quotes</strong></h3>
+            <blockquote>{{ quote.quote }}</blockquote>
+            <h6>{{ quote.author }}</h6>
+        </div>
     </div>
 </div>
+
 
 {% endblock %}
