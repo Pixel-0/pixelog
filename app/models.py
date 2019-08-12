@@ -20,10 +20,13 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
+    # role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
+    # reviews = db.relationship('Review',backref = 'user',lazy = "dynamic")
 
+    # securing passwords
     @property
     def password(self):
         raise AttributeError('You can not read the password Attribute')
