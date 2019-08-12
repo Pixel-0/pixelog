@@ -1,0 +1,3 @@
+Dear {{user.username}}
+Welcome to Pixelog.
+Your sign up has been successfull. Welcome and feel free to add a blog post, a comment on other posts and subscribe to get notified when new posts are made.
