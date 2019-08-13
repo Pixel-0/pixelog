@@ -17,7 +17,7 @@ def index():
     View root page function that returns the index page and its data
     '''
     pitches =Pitch.query.order_by(Pitch.date.desc()).all()
-    title = "My Blog -- Home"
+    title = "Home"
     sambu = random_post()
     quote = sambu["quote"]
     quote_author = sambu ["author"]
@@ -30,7 +30,7 @@ def pitches_category(category):
     '''
     View function that returns blogs by category
     '''
-    title = f'My Blog -- {category.upper()}'
+    title = f'{category.upper()}'
     if category == "all":
         pitches = Pitch.query.order_by(Pitch.time.desc())
     else:
@@ -49,7 +49,7 @@ def new_pitch(uname):
     if user is None:
         abort(404)
 
-    title_page = "My Blog -- Add New Post"
+    title_page = "Add New Post"
 
     if form.validate_on_submit():
 
@@ -83,7 +83,7 @@ def new_comment(uname,pitch_id):
     pitch = Pitch.query.filter_by(id = pitch_id).first()
 
     form = CommentForm()
-    title_page = "My Blog -- Comment Blog"
+    title_page = "Comment Blog"
 
     if form.validate_on_submit():
         title = form.title.data

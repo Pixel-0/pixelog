@@ -14,45 +14,66 @@
     {{ message }}
   </div>
   {% endfor %}
-  <h1 class="text-center">Welcome to Pixelog.</h1>
-  <div class="post">
-    <p>{{quote}}</p>
-    <p id="name">"{{quote_author}}"</p>
-  </div>
-  <br>
+  
+  <div class="row d-flex h-100 mt-5">
+        
+    <div class="col-md-6">
+        <img style="margin-left: 10%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs-o_EQq4lSxUWgH66-aYGO-PMQAVxQjRxJ5RrX3T55SBCXy9d" width="350px" alt="">
+    </div>
+    <div class="col-md-6 mt-5">
+            <h1 style="color: #000">Welcome to Pixelog</h1>
+            <br>
+            <p>Personal blog site for sharing opinions.<br>Interact with pixelog and get the latest blog posts</p>
+            <br>
+            <a href="{{ url_for('auth.register') }}" class="btn" style="background-color: transparent;color:#000; border: 1px solid #000;">Lets get you started!</a>
+        </div>
+</div>
+<div class="row">
+    <hr>
+    <div class="col-md-6">
+            <div class="post" jumbotron>
+                    <p>{{quote}}</p>
+                    <p id="name">"{{quote_author}}"</p>
+                  </div>
+    </div>
+
+  
+  
+  <div class="col-md-6">
   <h2 class="text-center"><u><strong><i>Categories</i></strong></u></h2>
   <br>
-  <hr>
-  <br>
+  
   <div class="center">
-    <div class="row categories">
+    <div style="margin-left: 15%; overflow-y: scroll; height: 200px;" class="row categories">
       <a href="{{url_for('main.pitches_category',category='Fashion Blog')}}">
         <div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <span>Fashion Blogs</span>
+        <span>Fashion</span>
       </div></a>
       <a href="{{url_for('main.pitches_category',category='Food Blog')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <span>Food Blogs</span>
+        <span>Food</span>
       </div></a>
 
 
       <a href="{{url_for('main.pitches_category',category='Travel Blog')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <span>Travel Blogs</span>
+        <span>Travel</span>
       </div></a>
-    </div>
-    <div class="row categories">
+    
+    
       <a href="{{url_for('main.pitches_category',category='Music Blog')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <span>Music Blogs</span>
+        <span>Music</span>
       </div></a>
 
 
       <a href="{{url_for('main.pitches_category',category='Sports Blog')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <span>Sports Blogs</span>
+        <span>Sports</span>
       </div></a>
       <a href="{{url_for('main.pitches_category',category='All Blogs')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <span>All Blogs</span>
       </div></a>
     </div>
   </div>
+</div>
+</div>
 </div>
 </div>
 
@@ -65,6 +86,7 @@
     border: 0.5px solid black;
     border-radius: 10px;
     padding: 5%;
+    background-color: rgba(0, 0, 0, 0.4);
   }
 
   #name {
@@ -77,9 +99,9 @@
     height: 3px;
     align-content: center;
     border-radius: 8px;
-    background-color: #414341;
+    background-color: rgba(0, 0, 0, 0.4);
     border: none;
-    color: #FFFFFF;
+    color: #000;
     text-align: center;
     font-size: 16px;
     padding: 20px;
