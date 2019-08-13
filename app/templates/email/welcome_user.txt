@@ -1,3 +1,7 @@
-Dear {{user.username}}
-Welcome to Pixelog.
-Your sign up has been successfull. Welcome and feel free to add a blog post, a comment on other posts and subscribe to get notified when new posts are made.
+Hello {{user.username}}
+Welcome to My Blog by DenzelOuma.
+
+We have just seen you have signed up for our application and want to welcome you to the family.
+Please enjoy my blog and fell free to also submit a post.
+
+Thanks!

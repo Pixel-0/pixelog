@@ -1,38 +1,141 @@
-{% extends 'base.html'%}
-
-
-<!-- Styles block -->
+{% extends "base.html" %}
 
 {% block styles%}
 {{ super() }}
-{% endblock %}
-
-<link rel="stylesheet" href="/home/moringa/Desktop/pixelog/app/static/css/bootstrap.css">
+<link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Courgette|Gloria+Hallelujah|Indie+Flower|Permanent+Marker|Varela+Round" rel="stylesheet">
+{% endblock%}
 
 {% block content %}
-<div class="row d-flex h-100 mt-5">
-        
-        <div class="col-md-6">
-            <img style="margin-left: 10%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs-o_EQq4lSxUWgH66-aYGO-PMQAVxQjRxJ5RrX3T55SBCXy9d" width="350px" alt="">
-        </div>
-        <div class="col-md-6 mt-5">
-                <h1 style="color: #000">Welcome to Pixelog</h1>
-                <br>
-                <p>Personal blog site for sharing opinions.<br>Interact with pixelog and get the latest blog posts</p>
-                <br>
-                <a href="{{ url_for('auth.register') }}" class="btn" style="background-color: transparent;color:#000; border: 1px solid #000;">Lets get started!</a>
-            </div>
-    </div>
-
 <div class="container">
-    <div class="jumbotron text-center">
-        <div class="quotes mt-5 w-50 mx-auto text-center">
-            <h3 class="text-dark m-0 m-2"><strong>Daily quotes</strong></h3>
-            <blockquote>{{ quote.quote }}</blockquote>
-            <h6>{{ quote.author }}</h6>
-        </div>
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ message }}
+  </div>
+  {% endfor %}
+  <h1 class="text-center">Welcome to My Blog.</h1>
+  <div class="post">
+    <p>{{quote}}</p>
+    <p id="name">"{{quote_author}}"</p>
+  </div>
+  <br>
+  <h2 class="text-center"><u><strong><i>Categories</i></strong></u></h2>
+  <br>
+  <hr>
+  <br>
+  <div class="center">
+    <div class="row categories">
+      <a href="{{url_for('main.pitches_category',category='Fashion Blog')}}">
+        <div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <span>Fashion Blogs</span>
+      </div></a>
+      <a href="{{url_for('main.pitches_category',category='Food Blog')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <span>Food Blogs</span>
+      </div></a>
+
+
+      <a href="{{url_for('main.pitches_category',category='Travel Blog')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <span>Travel Blogs</span>
+      </div></a>
     </div>
+    <div class="row categories">
+      <a href="{{url_for('main.pitches_category',category='Music Blog')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <span>Music Blogs</span>
+      </div></a>
+
+
+      <a href="{{url_for('main.pitches_category',category='Sports Blog')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <span>Sports Blogs</span>
+      </div></a>
+      <a href="{{url_for('main.pitches_category',category='All Blogs')}}"><div class="category col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <span>All Blogs</span>
+      </div></a>
+    </div>
+  </div>
 </div>
+</div>
+
+
+<style>
+  .post {
+    text-align: center;
+    font-size: 150%;
+    font-family: Courgette;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    padding: 5%;
+  }
+
+  #name {
+    font-weight: bold;
+    font-family: Courgette;
+    font-size: 175%;
+  }
+
+  .category {
+    height: 3px;
+    align-content: center;
+    border-radius: 8px;
+    background-color: #414341;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    width: 375px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .category span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .category span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .category:hover span {
+    padding-right: 25px;
+  }
+
+  .category:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+
+
+
+  .img {
+    margin-left: 40%;
+    margin-right: 40%;
+  }
+
+  .style {
+    font-family: Courgette;
+    text-align: center;
+    font-size: 200%;
+  }
+
+  #style {
+    font-size: 200%;
+  }
+
+  .category {
+    padding-bottom: 50px;
+  }
+</style>
 
 
 {% endblock %}

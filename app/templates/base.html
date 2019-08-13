@@ -1,8 +1,8 @@
-{% extends 'bootstrap/base.html' %}
+{% extends 'bootstrap/base.html'%}
 
-<!-- Navbar block  --> 
+<!-- Navbar block  -->
 {% block navbar %}
-    {% include 'navbar.html' %}
+  {% include 'navbar.html' %}
 {% endblock %}
 
 {%block styles %}
@@ -11,4 +11,8 @@
   {{ simplemde.css}}
   {{ simplemde.js }}
 
+  <!--Linking Fonts, CSS, Icon  -->
+  <link rel="icon" href="../static/photos/icon.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Courgette|Gloria+Hallelujah|Indie+Flower|Permanent+Marker|Varela+Round" rel="stylesheet">
 {% endblock %}

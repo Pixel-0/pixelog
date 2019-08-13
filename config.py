@@ -1,9 +1,12 @@
 import os
 
 class Config:
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:crazy@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    SECRET_KEY = 'mannuh'
+    # SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -12,27 +15,29 @@ class Config:
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
-    # simple mde  configurations
-    SIMPLEMDE_JS_IIFE = True
-    SIMPLEMDE_USE_CDN = True
+
+
     @staticmethod
     def init_app(app):
         pass
-    
+
 
 class ProdConfig(Config):
-    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    DEBUG =True 
+        SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+        debug = os.environ.get("DEBUG")
+
 
 class TestConfig(Config):
-    DEBUG =True 
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://thomas:psqltoto29@localhost/pitchperfect_test'
+    pass
+
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:crazy@localhost/blog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:crazy@localhost/pitch'
     DEBUG = True
 
 config_options = {
 'development':DevConfig,
 'production':ProdConfig,
 'test':TestConfig
-} 
+}
